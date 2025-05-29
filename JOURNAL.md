@@ -7,7 +7,7 @@ created_at: "2025-05-25"
 
 # May 26th: Finished initial power sources!
 
-Since I have some experience designing PCBs for other projects, this time I decided to run the project off an ESP32 SoC instead of using a devkit. This took some research, since I had no experience working with SoC's before. After watching some videos and looking at a few tutorials online, I designed a usb power circuit for the ESP32, one of the main parts of the whole design. THen I went on to designa  power circuit for the lipo input. i decided that using the lipo to power both the ESC's and the ESP32 was the best decision. When I was done, I ended up with this:
+Since I have some experience designing PCBs for other projects, this time I decided to run the project off an ESP32 SoC instead of using a devkit. This took some research, since I had no experience working with SoC's before. After watching some videos and looking at a few tutorials online, I designed a usb power circuit for the ESP32, one of the main parts of the whole design. Then I went on to design a  power circuit for the lipo input. i decided that using the lipo to power both the ESC's and the ESP32 was the best decision. When I was done, I ended up with this:
 
 ![image](https://github.com/user-attachments/assets/b7ac88c6-33cb-473b-931b-9b59a4b2e634)
 
@@ -40,3 +40,23 @@ I still have to add the telemetry and work on finishing the hall effect sensor. 
 
 
 **Total time spent: 2h**
+
+# May 28th: Finished Schematic
+
+Today I finished the schematic for the car itself so I could get started on the PCB design. I added an NRF24L01 for telemetry. I also found out after speaking to @koeg on Slack that I did the pull up resistors wrong. They should be fixed now and look like this:
+
+![image](https://github.com/user-attachments/assets/1b71f3c9-7340-4230-b5ce-8f25f831b95b)
+
+I also finished the hall effect sensor, once again with help from @koeg. It took me a while to figure out how to properly wire it since it was a 5v device. I pulled the sensor up to 5v and then pulled the data pin back down to 3.3v to ensure compatibility with the ESP32, which runs at 3.3v. This is what it looks like now:
+
+![image](https://github.com/user-attachments/assets/1347c057-66b9-40bd-b020-04721c166222)
+
+Then I selected the footprints to use for the PCB, which is what took me the most time. This took a while since I have never used capacitors or resistors before and I didn't know what footprints they would use, since they all have different sizes based on their capacitance/resistance. I ended up watching a YouTube tutorial to figure it out. I also took a look at the economic PCBA option for JLCPCB and found that they only assemble SMD components, so I made sure to use SMD capacitors and resistors. The only thing left before moving on to designing my PCB is finishing up some footprints for custom parts. Once I finish this and my PCB, I can get started on the controller, which should use much of the same power logic. 
+
+This is my final schematic:
+
+![image](https://github.com/user-attachments/assets/61e19a63-01ce-4190-9372-661012fe6446)
+
+
+**Total time spent: 3h**
+
